@@ -149,6 +149,70 @@
         .office-info-grid>div:nth-child(odd) {
             text-align: right;
         }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 70vh;
+            /* Set max height for image to leave space for caption */
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .modal-caption {
+            color: #333;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1rem;
+            max-width: 100%;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -205,50 +269,56 @@
                 <div class="px-4 sm:px-6 lg:px-8">
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">境内写真</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        <div
-                            class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipN9_D9W8u2Mv4dE2jYq2h7v9g7x8d3H0C3l5gLg=w400-h300-k-no"
-                                alt="連なる鳥居" class="w-full h-48 object-cover">
+                        <div class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+                            data-image="https://via.placeholder.com/800x600/FF5733/FFFFFF?text=鳥居の画像"
+                            data-caption="複数の鳥居が連なる厳島神社の正面入り口。">
+                            <img src="https://via.placeholder.com/400x300/FF5733/FFFFFF?text=鳥居" alt="連なる鳥居"
+                                class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <p class="text-sm font-semibold text-gray-700">連なる鳥居</p>
                             </div>
                         </div>
-                        <div
-                            class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipMYo9b-yN2qB4W9l7fE7x5JpB6T2o6j8eK8gYd0=w400-h300-k-no"
-                                alt="社殿" class="w-full h-48 object-cover">
+                        <div class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+                            data-image="https://via.placeholder.com/800x600/CD5C5C/FFFFFF?text=社殿の画像"
+                            data-caption="厳かな雰囲気が漂う厳島神社の社殿。">
+                            <img src="https://via.placeholder.com/400x300/CD5C5C/FFFFFF?text=社殿" alt="社殿"
+                                class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <p class="text-sm font-semibold text-gray-700">社殿</p>
                             </div>
                         </div>
-                        <div
-                            class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipPgN4H5U8q2w1B_2d6g7y6C4E9p7d8g0x_3qP_s=w400-h300-k-no"
-                                alt="手水舎" class="w-full h-48 object-cover">
+                        <div class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+                            data-image="https://via.placeholder.com/800x600/8B0000/FFFFFF?text=手水舎の画像"
+                            data-caption="参拝前に心身を清めるための手水舎。龍の口から清らかな水が流れます。">
+                            <img src="https://via.placeholder.com/400x300/8B0000/FFFFFF?text=手水舎" alt="手水舎"
+                                class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <p class="text-sm font-semibold text-gray-700">手水舎</p>
                             </div>
                         </div>
-                        <div
-                            class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipP_2q7D2Z2M2c9j_2K2e1j1F8d6e3L8t5C4kH_c=w400-h300-k-no"
-                                alt="弁天池" class="w-full h-48 object-cover">
+                        <div class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+                            data-image="https://via.placeholder.com/800x600/808080/FFFFFF?text=弁天池の画像"
+                            data-caption="厳島神社が隣接する弁天池。夏には大賀蓮が美しく咲き誇ります。">
+                            <img src="https://via.placeholder.com/400x300/808080/FFFFFF?text=弁天池" alt="弁天池"
+                                class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <p class="text-sm font-semibold text-gray-700">弁天池</p>
                             </div>
                         </div>
-                        <div
-                            class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipO_2w4e2x_2D3K2a9F6h3U6e9H7o4j3j8i9uK3p=w400-h300-k-no"
-                                alt="蛇穴" class="w-full h-48 object-cover">
+                        <div class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+                            data-image="https://via.placeholder.com/800x600/4B0082/FFFFFF?text=蛇穴の画像"
+                            data-caption="金運アップのご利益があるとされる蛇穴。岩に囲まれた神秘的な場所です。">
+                            <img src="https://via.placeholder.com/400x300/4B0082/FFFFFF?text=蛇穴" alt="蛇穴"
+                                class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <p class="text-sm font-semibold text-gray-700">蛇穴</p>
                             </div>
                         </div>
-                        <div
-                            class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipN_2w3_8x_3K_5u_2g9s1d9_2c9d2f4a5g7r8o6e=w400-h300-k-no"
-                                alt="子安神社" class="w-full h-48 object-cover">
+                        <div class="rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+                            data-image="https://via.placeholder.com/800x600/006400/FFFFFF?text=子安神社の画像"
+                            data-caption="安産祈願にご利益がある境内社、子安神社。">
+                            <img src="https://via.placeholder.com/400x300/006400/FFFFFF?text=子安神社" alt="子安神社"
+                                class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <p class="text-sm font-semibold text-gray-700">子安神社</p>
                             </div>
@@ -302,8 +372,8 @@
                             <h3 class="text-xl font-semibold text-gray-800 mb-2">地図</h3>
                             <div class="mt-4 p-4 text-center text-gray-500">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6486.513952934666!2d140.1137628!3d35.6213909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602284bd77e969b9%3A0x4a558e86117130cb!2z44CSMjYwLTAwNDUg5Y2D6JGJ55yM5Y2D6JGJ5biC5Lit5aSu5Yy65byB5aSp77yT5LiB55uu77yR4oiS77yR!5e0!3m2!1sja!2sjp!4v1756558355523!5m2!1sja!2sjp"
-                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.652174620165!2d140.1197212152586!3d35.66694668019623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600c50d3a5628b01%3A0x7d6c62c93d9b00e3!2z576-5a6F56ys5a6u56ys5qW95a6u5bqn!5e0!3m2!1sja!2sjp!4v1628173426543!5m2!1sja!2sjp"
+                                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
@@ -317,26 +387,58 @@
         </footer>
     </div>
 
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <img class="modal-img" id="modalImage">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabContents = document.querySelectorAll('.tab-content');
+            const galleryImages = document.querySelectorAll('#gallery .cursor-pointer');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const closeModal = document.querySelector('.modal-close');
 
+            // Tab switching logic
             tabButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     tabButtons.forEach(btn => {
                         btn.classList.remove('active');
                         btn.classList.add('nav-link');
                     });
-
                     button.classList.add('active');
                     button.classList.remove('nav-link');
-
                     tabContents.forEach(content => content.classList.remove('active'));
-
                     const targetTab = button.dataset.tab;
                     document.getElementById(targetTab).classList.add('active');
                 });
+            });
+
+            // Image modal logic
+            galleryImages.forEach(imageContainer => {
+                imageContainer.addEventListener('click', () => {
+                    const imageUrl = imageContainer.getAttribute('data-image');
+                    const imageCaption = imageContainer.getAttribute('data-caption');
+                    modal.style.display = 'flex';
+                    modalImage.src = imageUrl;
+                    modalCaption.textContent = imageCaption;
+                });
+            });
+
+            // Close modal by clicking the close button or outside the image
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
             });
 
             // Set initial active state for the "御由緒" tab
